@@ -98,6 +98,24 @@ public class ResourceCentreTest {
 	public void testRetrieveAllChromebook() {
 		//fail("Not yet implemented");
 		// write your code here
+		
+		// Test if the Item List is not null but empty so that the items can be properly retrieves
+		assertNotNull("Test if there is a valid ArrayList to retrieve items from", chromebookList);
+		
+		// Test that viewing an item list that is empty will not output any items
+		String allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
+		assertEquals("Test if viewing an empty list will not output any items", "", allChromebook);
+		
+		// Test that viewing an item list with 2 items inside will show 2 items
+		// asset tag, description, available, due date, os
+		chromebookList.add(cb1);
+		chromebookList.add(cb2);
+		allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
+		String testRetrieveOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0011", "My Google Chromebook 1st", "Yes", "", "Mac OS");
+		testRetrieveOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0012", "SAMSUNG Chromebook 4+", "Yes", "", "Win 10");
+		assertEquals("Test if ArrayList matches displayed list", allChromebook, testRetrieveOutput);
+		
+		
 	}
 
 	@Test
