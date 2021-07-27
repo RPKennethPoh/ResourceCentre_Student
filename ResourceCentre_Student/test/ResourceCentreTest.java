@@ -50,7 +50,7 @@ public class ResourceCentreTest {
 	}
 	@Test
 	public void testAddChromebook() {
-		// write your code here
+		// write your code here.
 		
 		//Test if there is an available Chromebook ArrayList to add to
 		assertNotNull("Test if there is an available Chromebook ArrayList to add to", chromebookList);
@@ -67,7 +67,7 @@ public class ResourceCentreTest {
 		//Test that the size of the Chromebook ArrayList is now 2 
 		ResourceCentre.addChromebook(chromebookList, cb2);
 		assertEquals("Test that the size of the Chromebook ArrayList is now 2 ", 
-				2, camcorderList.size());
+				2, chromebookList.size());
 	}
 	
 	@Test
@@ -132,7 +132,7 @@ public class ResourceCentreTest {
 		camcorderList.add(cc1);
 		camcorderList.get(0).setIsAvailable(false);
 		boolean loaned = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "10/06/21");
-		assertEquals("//Test that the item(s) can be loaned upon availability", loaned, false);
+		assertEquals("Test that the item(s) can be loaned upon availability", loaned, false);
 		
 		
 	}
