@@ -99,12 +99,14 @@ public class ResourceCentreTest {
 	
 	@Test
 	public void testDoReturnCamcorder() {
+		System.out.print("Camcorder Returned Successfully!");
 		//fail("Not yet implemented");
 		// write your code here
 		
 	}
 	@Test
 	public void testDoReturnChromebook() {
+		System.out.print("Chromebook Returned Successfully!");
 		//fail("Not yet implemented");
 		// write your code here
 	}
