@@ -151,7 +151,6 @@ public class ResourceCentreTest {
 		assertTrue("Chromebook not loaned out", doLoan);
 		
 		// Test that the item(s) unavailable cannot be loaned
-		Chromebook testLoan = cb1;
 		boolean isLoaned = ResourceCentre.doLoanChromebook(chromebookList, cb1.getAssetTag(), "28/07/2022");
 		assertFalse("Item can still be loaned", isLoaned);
 		
@@ -163,12 +162,45 @@ public class ResourceCentreTest {
 		//fail("Not yet implemented");
 		// write your code here
 		
+		ResourceCentre.addCamcorder(camcorderList, cc1);
+		
+		// Test that a loaned camcorder can be returned
+		camcorderList.get(0).setIsAvailable(false);
+		boolean returnCC = ResourceCentre.doReturnCamcorder(camcorderList, cc1.getAssetTag());
+		assertTrue("Loaned camcorder cannot be returned", returnCC);
+		
+		// Test that an available camcorder cannot be returned
+		boolean returnAvailCC = ResourceCentre.doReturnCamcorder(camcorderList, cc1.getAssetTag());
+		assertFalse("Available camcorder can be returned", returnAvailCC);
+		
+		// Test that an invalid camcorder (asset tag) cannot be returned
+		boolean returnInvalidCC = ResourceCentre.doReturnCamcorder(camcorderList, "CC0001");
+		assertFalse("Invalid camcorder can be returned", returnInvalidCC);
+		
+		
+		
+		
 	}
 	@Test
 	public void testDoReturnChromebook() {
 		System.out.print("Chromebook Returned Successfully!");
 		//fail("Not yet implemented");
 		// write your code here
+		
+		chromebookList.add(cb1);
+		
+		// Test that a loaned chromebook can be returned
+		chromebookList.get(0).setIsAvailable(false);
+		boolean returnCB = ResourceCentre.doReturnChromebook(chromebookList, cb1.getAssetTag());
+		assertTrue("Loaned chromebook cannot be returned", returnCB);
+		
+		// Test that an available chromebook cannot be returned
+		boolean returnAvailCB = ResourceCentre.doReturnChromebook(chromebookList, cb1.getAssetTag());
+		assertFalse("Available chromebook can be returned", returnAvailCB);
+		
+		// Test that an invalid chromebook (asset tag) cannot be returned
+		boolean returnInvalidCB = ResourceCentre.doReturnChromebook(chromebookList, "CB0001");
+		assertFalse("Invalid chromebook can be returned", returnInvalidCB);
 	}
 	
 	@After
