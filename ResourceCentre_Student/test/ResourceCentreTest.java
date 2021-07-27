@@ -120,7 +120,7 @@ public class ResourceCentreTest {
 
 	@Test
 	public void testDoLoanCamcorder() {
-		//Test that the items list are not null before loaning.
+		//Test that the items list are not null before loaning
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", camcorderList);
 		
 		//Test that the status updates when an item goes on loan
