@@ -108,8 +108,8 @@ public class ResourceCentreTest {
 		
 		// Test that viewing an item list with 2 items inside will show 2 items
 		// asset tag, description, available, due date, os
-		chromebookList.add(cb1);
-		chromebookList.add(cb2);
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		ResourceCentre.addChromebook(chromebookList, cb2);
 		allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
 		String testRetrieveOutput = String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0011", "My Google Chromebook 1st", "Yes", "", "Mac OS");
 		testRetrieveOutput += String.format("%-10s %-30s %-10s %-10s %-20s\n", "CB0012", "SAMSUNG Chromebook 4+", "Yes", "", "Win 10");
@@ -146,11 +146,11 @@ public class ResourceCentreTest {
 		assertNotNull("Test if there is valid Camcorder arraylist", camcorderList);
 		
 		// Test that the status updates when item is loaned
-		Chromebook testLoan = cb1;
-		chromebookList.clear();
-		chromebookList.add(cb1);
-		chromebookList.add(cb2);
-
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		boolean doLoan = ResourceCentre.doLoanChromebook(chromebookList, cb1.getAssetTag(), "27/07/2022");
+		assertTrue("Chromebook not loaned out", doLoan);
+		
+		/*
 		for (int i = 0; i < chromebookList.size(); i++) {
 			if(testLoan.getAssetTag().equalsIgnoreCase(chromebookList.get(i).getAssetTag()) && chromebookList.get(i).getIsAvailable()) {
 				chromebookList.get(i).setIsAvailable(false);
@@ -158,14 +158,12 @@ public class ResourceCentreTest {
 			}
 	}
 		assertFalse("Item is not loaned", testLoan.getIsAvailable());
+		*/
 		
 		// Test that the item(s) unavailable cannot be loaned
-		testLoan = cb1;
-		boolean cantLoan = false;
-		if(!cb1.getIsAvailable()) {
-			cantLoan = true;
-		}
-		assertTrue("Item can still be loaned", cantLoan);
+		Chromebook testLoan = cb1;
+		boolean isLoaned = ResourceCentre.doLoanChromebook(chromebookList, cb1.getAssetTag(), "28/07/2022");
+		assertFalse("Item can still be loaned", isLoaned);
 		
 }
 	
