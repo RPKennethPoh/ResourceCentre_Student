@@ -50,8 +50,24 @@ public class ResourceCentreTest {
 	}
 	@Test
 	public void testAddChromebook() {
-		//fail("Not yet implemented");
 		// write your code here
+		
+		//Test if there is an available Chromebook ArrayList to add to
+		assertNotNull("Test if there is an available Chromebook ArrayList to add to", chromebookList);
+		
+		//Test that the Chromebook ArrayList increases in size after a Chromebook has been added
+		ResourceCentre.addChromebook(chromebookList, cb1);		
+		assertEquals("Test that the Chromebook ArrayList increases in size after a Chromebook has been added", 
+				1, chromebookList.size());
+		
+		//Test that the new Chromebook is added as the first item of the ArrayList 
+		assertSame("Test that the new Chromebook is added as the first item of the ArrayList ", 
+				cb1, chromebookList.get(0));
+		
+		//Test that the size of the Chromebook ArrayList is now 2 
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Test that the size of the Chromebook ArrayList is now 2 ", 
+				2, camcorderList.size());
 	}
 	
 	@Test
