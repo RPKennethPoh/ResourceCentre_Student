@@ -88,7 +88,6 @@ public class ResourceCentre {
 				System.out.println("Bye!");
 			} else {
 				System.out.println("Invalid option");
-				System.out.println("Invalid option");
 			}
 
 		}
