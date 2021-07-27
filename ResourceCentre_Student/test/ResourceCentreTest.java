@@ -150,16 +150,6 @@ public class ResourceCentreTest {
 		boolean doLoan = ResourceCentre.doLoanChromebook(chromebookList, cb1.getAssetTag(), "27/07/2022");
 		assertTrue("Chromebook not loaned out", doLoan);
 		
-		/*
-		for (int i = 0; i < chromebookList.size(); i++) {
-			if(testLoan.getAssetTag().equalsIgnoreCase(chromebookList.get(i).getAssetTag()) && chromebookList.get(i).getIsAvailable()) {
-				chromebookList.get(i).setIsAvailable(false);
-				testLoan = chromebookList.get(i);
-			}
-	}
-		assertFalse("Item is not loaned", testLoan.getIsAvailable());
-		*/
-		
 		// Test that the item(s) unavailable cannot be loaned
 		Chromebook testLoan = cb1;
 		boolean isLoaned = ResourceCentre.doLoanChromebook(chromebookList, cb1.getAssetTag(), "28/07/2022");
