@@ -120,7 +120,6 @@ public class ResourceCentreTest {
 
 	@Test
 	public void testDoLoanCamcorder() {
-		//fail("Not yet implemented");
 		//Test that the items list are not null before loaning
 		assertNotNull("Test if there is valid Camcorder arraylist to add to", camcorderList);
 		
