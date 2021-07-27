@@ -134,13 +134,40 @@ public class ResourceCentreTest {
 		boolean loaned = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "10/06/21");
 		assertEquals("//Test that the item(s) can be loaned upon availability", loaned, false);
 		
+		
 	}
 	
 	@Test
 	public void testDoLoanChromebook() {
 		//fail("Not yet implemented");
 		// write your code here
+		
+		// Test that the item list is not null before loaning
+		assertNotNull("Test if there is valid Camcorder arraylist", camcorderList);
+		
+		// Test that the status updates when item is loaned
+		Chromebook testLoan = cb1;
+		chromebookList.clear();
+		chromebookList.add(cb1);
+		chromebookList.add(cb2);
+
+		for (int i = 0; i < chromebookList.size(); i++) {
+			if(testLoan.getAssetTag().equalsIgnoreCase(chromebookList.get(i).getAssetTag()) && chromebookList.get(i).getIsAvailable()) {
+				chromebookList.get(i).setIsAvailable(false);
+				testLoan = chromebookList.get(i);
+			}
 	}
+		assertFalse("Item is not loaned", testLoan.getIsAvailable());
+		
+		// Test that the item(s) unavailable cannot be loaned
+		testLoan = cb1;
+		boolean cantLoan = false;
+		if(!cb1.getIsAvailable()) {
+			cantLoan = true;
+		}
+		assertTrue("Item can still be loaned", cantLoan);
+		
+}
 	
 	@Test
 	public void testDoReturnCamcorder() {
