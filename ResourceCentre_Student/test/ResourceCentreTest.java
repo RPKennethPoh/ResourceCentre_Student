@@ -121,7 +121,19 @@ public class ResourceCentreTest {
 	@Test
 	public void testDoLoanCamcorder() {
 		//fail("Not yet implemented");
-		// write your code here
+		//Test that the items list are not null before loaning
+		assertNotNull("Test if there is valid Camcorder arraylist to add to", camcorderList);
+		
+		//Test that the status updates when an item goes on loan
+		camcorderList.add(cc1);
+		camcorderList.get(0).setIsAvailable(false);
+		assertEquals("Test that the status updates when an item goes on loan", camcorderList.get(0).getIsAvailable(), false);
+		
+		//Test that the item(s) can be loaned upon availability
+		camcorderList.add(cc1);
+		camcorderList.get(0).setIsAvailable(false);
+		boolean loaned = ResourceCentre.doLoanCamcorder(camcorderList, "CC0011", "10/06/21");
+		assertEquals("//Test that the item(s) can be loaned upon availability", loaned, false);
 		
 	}
 	
