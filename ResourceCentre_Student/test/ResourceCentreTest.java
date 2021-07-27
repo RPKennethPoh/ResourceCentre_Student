@@ -50,7 +50,7 @@ public class ResourceCentreTest {
 	}
 	@Test
 	public void testAddChromebook() {
-		// write your code here
+		// write your code here.
 		
 		//Test if there is an available Chromebook ArrayList to add to
 		assertNotNull("Test if there is an available Chromebook ArrayList to add to", chromebookList);
